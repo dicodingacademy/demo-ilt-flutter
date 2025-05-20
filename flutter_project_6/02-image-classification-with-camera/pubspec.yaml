@@ -1,0 +1,33 @@
+name: tflite_vision_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  provider: ^6.1.2
+  image_picker: ^1.1.2
+  camera: ^0.11.1
+  image: ^4.5.2
+  # todo-01-model-04: install the dependency
+  tflite_flutter: ^0.11.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  # todo-01-model-01: download the model from this link below.
+  # https://www.kaggle.com/models/tensorflow/mobilenet-v1/tfLite/1-0-224-quantized-metadata
+  # todo-01-model-02: put the model inside asset folder, rename it into "mobilenettflite", extract the model, and get the label
+  # todo-01-model-03: register the directory path into pubspec.yaml
+  assets:
+    - assets/
