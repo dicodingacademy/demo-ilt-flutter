@@ -8,6 +8,7 @@ class LocalNotificationProvider extends ChangeNotifier {
   LocalNotificationProvider(this.flutterNotificationService);
 
   int _notificationId = 0;
+  int get notificationId => _notificationId;
   bool? _permission = false;
   bool? get permission => _permission;
 
@@ -25,6 +26,14 @@ class LocalNotificationProvider extends ChangeNotifier {
       title: "New Notification",
       body: "This is a new notification with id $_notificationId",
       payload: "This is a payload from notification with id $_notificationId",
+    );
+  }
+
+  // todo-zoned-schedule: run the schedule notification
+  void scheduleDailyTenAMNotification() {
+    _notificationId += 1;
+    flutterNotificationService.scheduleDailyTenAMNotification(
+      id: _notificationId,
     );
   }
 

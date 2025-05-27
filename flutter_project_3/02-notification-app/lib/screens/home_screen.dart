@@ -46,6 +46,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   textAlign: TextAlign.center,
                 ),
               ),
+              ElevatedButton(
+                onPressed: () async {
+                  await _scheduleDailyTenAMNotification();
+                },
+                child: const Text(
+                  "Schedule daily 10:00 AM notification",
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  await _cancelNotification();
+                },
+                child: const Text(
+                  "Cancel Schedule Notification",
+                  textAlign: TextAlign.center,
+                ),
+              ),
               const MyDivider(title: "Background Service"),
               ElevatedButton(
                 onPressed: () {
@@ -79,6 +97,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _showNotification() async {
     context.read<LocalNotificationProvider>().showNotification();
+  }
+
+  // todo-zoned-schedule: run the schedule notification
+  Future<void> _scheduleDailyTenAMNotification() async {
+    context.read<LocalNotificationProvider>().scheduleDailyTenAMNotification();
+  }
+
+  // todo-zoned-schedule: cancel the last notification, which is schedule notification.
+  Future<void> _cancelNotification() async {
+    final localNotificationProvider = context.read<LocalNotificationProvider>();
+    final notificationId = localNotificationProvider.notificationId;
+    localNotificationProvider.cancelNotification(notificationId);
   }
 
   void _runBackgroundPeriodicTask() async {

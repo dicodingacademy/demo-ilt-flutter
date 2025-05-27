@@ -18,7 +18,11 @@ void main() async {
         Provider(
           create: (context) => LocalNotificationService(
             context.read<HttpService>(),
-          )..init(),
+          )
+            ..init()
+            // todo-zoned-schedule: dont forget to configure the 
+            // local timezone after initialization http service.
+            ..configureLocalTimeZone(),
         ),
         ChangeNotifierProvider(
           create: (context) => LocalNotificationProvider(

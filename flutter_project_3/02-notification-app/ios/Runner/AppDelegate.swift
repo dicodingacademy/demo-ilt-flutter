@@ -14,6 +14,7 @@ import workmanager
       UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
     }
 
+    // todo-zoned-schedule: add configuration to remove the scheduler on iOS.
     if(!UserDefaults.standard.bool(forKey: "Notification")) {
       UIApplication.shared.cancelAllLocalNotifications()
       UserDefaults.standard.set(true, forKey: "Notification")
