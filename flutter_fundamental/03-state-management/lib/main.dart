@@ -5,10 +5,14 @@ import 'package:ui_error_app/controller/http_controller.dart';
 import 'package:ui_error_app/controller/setting_controller.dart';
 import 'package:ui_error_app/screen/bookmark_screen.dart';
 import 'package:ui_error_app/screen/home_screen.dart';
+import 'package:ui_error_app/service/database/database_drift_service.dart';
 import 'package:ui_error_app/service/database_service.dart';
+import 'package:ui_error_app/service/database/database_sqflite_service.dart';
 import 'package:ui_error_app/service/http_service.dart';
 import 'package:ui_error_app/service/shared_preference_service.dart';
 import 'package:ui_error_app/style/theme.dart';
+
+// final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +25,8 @@ void main() async {
           create: (context) => HttpController(context.read()),
         ),
         // database
-        Provider(create: (context) => DatabaseService()),
+        // Provider<DatabaseService>(create: (context) => DatabaseSqfliteService()),
+        Provider<DatabaseService>(create: (context) => DatabaseDriftService()),
         ChangeNotifierProvider(
           create: (context) => DatabaseController(context.read()),
         ),
@@ -50,6 +55,7 @@ class MainApp extends StatelessWidget {
       theme: gaaraTheme,
       darkTheme: gaaraDarkTheme,
       themeMode: themeMode,
+      // navigatorObservers: [routeObserver],
       routes: {
         '/': (context) => HomeScreen(),
         '/bookmark': (context) => BookmarkScreen(),

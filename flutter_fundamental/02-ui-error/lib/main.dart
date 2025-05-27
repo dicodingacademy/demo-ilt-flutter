@@ -28,7 +28,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: gaaraTheme,
       darkTheme: gaaraDarkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       routes: {'/': (context) => HomeScreen()},
     );
   }

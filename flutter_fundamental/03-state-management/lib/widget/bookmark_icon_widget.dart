@@ -33,9 +33,7 @@ class _BookmarkIconWidgetState extends State<_BookmarkIconWidget> {
   void initState() {
     super.initState();
 
-    Future.microtask(() async {
-      await databaseController.getById(widget.place.id);
-    });
+    loadBookmark();
 
     databaseController.addListener(listener);
   }
@@ -46,11 +44,41 @@ class _BookmarkIconWidgetState extends State<_BookmarkIconWidget> {
     super.dispose();
   }
 
+  @override
+  void didUpdateWidget(_BookmarkIconWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.place.id != oldWidget.place.id) {
+      // If the place represented by this icon changes, reload its bookmark status.
+      loadBookmark();
+    }
+  }
+
+  void loadBookmark() => Future.microtask(() async {
+    await databaseController.getById(widget.place.id);
+  });
+
   void listener() {
-    final favoriteController = context.read<BookmarkController>();
+    final bookmarkController = context.read<BookmarkController>();
     final databaseState = databaseController.state;
-    if (databaseState is DatabaseSingleLoaded) {
-      favoriteController.isBookmarked = databaseState.isFavorite;
+
+    bool newBookmarkStatus = false;
+    bool statusDetermined = false;
+
+    if (databaseState is DatabaseSingleLoaded &&
+        databaseState.place?.id == widget.place.id) {
+      // Check if this state update is for the current widget's place
+      newBookmarkStatus = databaseState.isFavorite;
+      statusDetermined = true;
+    } else if (databaseState is DatabaseLoaded) {
+      // Check if the current widget's place is in the list of bookmarked places
+      newBookmarkStatus = databaseState.places.any(
+        (p) => p.id == widget.place.id,
+      );
+      statusDetermined = true;
+    }
+
+    if (statusDetermined) {
+      bookmarkController.isBookmarked = newBookmarkStatus;
     }
   }
 
