@@ -134,13 +134,13 @@ class TextFormFieldWidget extends StatelessWidget {
       controller: controller,
       maxLines: 1,
       decoration: InputDecoration(
-        hintText: "Write your last name",
-        label: Text("Last Name"),
+        hintText: hintText,
+        label: Text(label),
         border: OutlineInputBorder(),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter your name';
+          return 'Please enter your ${label.toLowerCase()}';
         }
         return null;
       },
