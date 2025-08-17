@@ -15,16 +15,15 @@ class ImageClassificationViewmodel extends ChangeNotifier {
   Map<String, num> _classifications = {};
 
   Map<String, num> get classifications => Map.fromEntries(
-    (_classifications.entries.toList()
-          ..sort((a, b) => a.value.compareTo(b.value)))
-        .reversed
-        .take(3),
-  );
+        (_classifications.entries.toList()
+              ..sort((a, b) => a.value.compareTo(b.value)))
+            .reversed
+            .take(3),
+      );
 
-  List<(String, String)> get classificationList =>
-      classifications.entries
-          .map((e) => (e.key, e.value.toStringAsFixed(2)))
-          .toList();
+  List<(String, String)> get classificationList => classifications.entries
+      .map((e) => (e.key, e.value.toStringAsFixed(2)))
+      .toList();
 
   String _imagePath = "";
 

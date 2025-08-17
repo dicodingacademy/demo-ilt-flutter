@@ -25,10 +25,8 @@ class User {
   @override
   bool operator ==(covariant User other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.email == email &&
-      other.password == password;
+
+    return other.email == email && other.password == password;
   }
 
   @override

@@ -5,18 +5,10 @@ class Quote {
   final String quote;
   final String author;
 
-  Quote({
-    required this.id,
-    required this.quote,
-    required this.author,
-  });
+  Quote({required this.id, required this.quote, required this.author});
 
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'quote': quote,
-      'author': author,
-    };
+    return {'id': id, 'quote': quote, 'author': author};
   }
 
   factory Quote.fromMap(Map<String, dynamic> map) {

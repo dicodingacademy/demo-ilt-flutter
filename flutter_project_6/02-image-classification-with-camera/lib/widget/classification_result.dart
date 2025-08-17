@@ -15,17 +15,16 @@ class ClassificationResult extends StatelessWidget {
         return classifications.isEmpty
             ? const SizedBox.shrink()
             : Column(
-              children: List.generate(
-                3,
-                (index) =>
-                    index >= classifications.length
-                        ? ClassificatioinItem(item: "", value: "")
-                        : ClassificatioinItem(
+                children: List.generate(
+                  3,
+                  (index) => index >= classifications.length
+                      ? ClassificatioinItem(item: "", value: "")
+                      : ClassificatioinItem(
                           item: classifications[index].$1,
                           value: classifications[index].$2,
                         ),
-              ),
-            );
+                ),
+              );
       },
     );
   }

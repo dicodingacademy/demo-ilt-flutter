@@ -55,7 +55,6 @@ class _PaginatedListViewState extends State<PaginatedListView> {
                 // The animation will be triggered when the ListTile is added to the tree.
                 builder: (context, value, child) {
                   // The opacity of the ListTile will be animated from 0 to 1.
-                  // The position will be animated from 100 pixels to 0 pixels.
                   return Opacity(
                     opacity: value,
                     // The ListTile will move from the right to its original position.

@@ -12,10 +12,9 @@ void main() {
       providers: [
         Provider(create: (context) => ImageClassificationService()),
         ChangeNotifierProvider(
-          create:
-              (context) => ImageClassificationViewmodel(
-                context.read<ImageClassificationService>(),
-              ),
+          create: (context) => ImageClassificationViewmodel(
+            context.read<ImageClassificationService>(),
+          ),
           lazy: false,
         ),
       ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/controller/counter_controller.dart';
 import 'package:myapp/screen/home_screen.dart';
-import 'package:myapp/screen/list_screen.dart';
 import 'package:provider/provider.dart';
 
 // wrap with provider

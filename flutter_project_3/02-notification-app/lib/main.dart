@@ -20,7 +20,7 @@ void main() async {
             context.read<HttpService>(),
           )
             ..init()
-            // todo-zoned-schedule: dont forget to configure the 
+            // todo-zoned-schedule: dont forget to configure the
             // local timezone after initialization http service.
             ..configureLocalTimeZone(),
         ),

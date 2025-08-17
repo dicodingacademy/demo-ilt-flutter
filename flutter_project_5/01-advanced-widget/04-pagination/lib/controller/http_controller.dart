@@ -22,7 +22,7 @@ class HttpController extends ChangeNotifier {
   Future<void> getQuote() async {
     // check if the page is '1'.
     // if so, emit the loading state to show the loading indicator
-    // if not, do not emit the loading state because the loading 
+    // if not, do not emit the loading state because the loading
     // state is already shown when the page is '1'.
     if (_page == 1) {
       _emit(const GetUsersResult.loading());

@@ -16,7 +16,9 @@ void main() {
           create: (context) => AuthProvider(context.read()),
         ),
         Provider(create: (context) => MyRouteInformationParser()),
-        ChangeNotifierProvider(create: (context) => MyRouterDelegate(context.read())),
+        ChangeNotifierProvider(
+          create: (context) => MyRouterDelegate(context.read()),
+        ),
       ],
       child: const QuotesApp(),
     ),

@@ -27,7 +27,8 @@ class QuotesListScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.info),
-            onPressed: () => onShowDialog("Info", "This is a message to Dialog Page."),
+            onPressed:
+                () => onShowDialog("Info", "This is a message to Dialog Page."),
           ),
         ],
       ),
@@ -39,7 +40,7 @@ class QuotesListScreen extends StatelessWidget {
               subtitle: Text(quote.quote),
               isThreeLine: true,
               onTap: () => onTapped(quote.id),
-            )
+            ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -49,11 +50,10 @@ class QuotesListScreen extends StatelessWidget {
           if (result) onLogout();
         },
         tooltip: "Logout",
-        child: authWatch.isLoadingLogout
-            ? const CircularProgressIndicator(
-                color: Colors.white,
-              )
-            : const Icon(Icons.logout),
+        child:
+            authWatch.isLoadingLogout
+                ? const CircularProgressIndicator(color: Colors.white)
+                : const Icon(Icons.logout),
       ),
     );
   }

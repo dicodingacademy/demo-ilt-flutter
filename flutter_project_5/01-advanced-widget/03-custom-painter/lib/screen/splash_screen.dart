@@ -11,10 +11,10 @@ class SplashScreen extends StatefulWidget {
 
 // TODO: Add custom animation to the SplashScreen
 class _SplashScreenState extends State<SplashScreen>
-    // add the SingleTickerProviderStateMixin to the state
-    // to use the AnimationController to animate the ripple effect
-    with SingleTickerProviderStateMixin {
-  
+        // add the SingleTickerProviderStateMixin to the state
+        // to use the AnimationController to animate the ripple effect
+        with
+        SingleTickerProviderStateMixin {
   // setup the AnimationController to animate the ripple effect
   late AnimationController _controller;
 

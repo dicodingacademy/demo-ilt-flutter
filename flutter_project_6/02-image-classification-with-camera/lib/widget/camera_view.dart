@@ -32,34 +32,30 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
       cameraDescription,
       ResolutionPreset.medium,
       enableAudio: false,
-      imageFormatGroup:
-          Platform.isAndroid
-              ? ImageFormatGroup.yuv420
-              : ImageFormatGroup.bgra8888,
+      imageFormatGroup: Platform.isAndroid
+          ? ImageFormatGroup.yuv420
+          : ImageFormatGroup.bgra8888,
     );
     await previousCameraController?.dispose();
 
-    cameraController
-        .initialize()
-        .then((value) {
-          if (mounted) {
-            setState(() {
-              controller = cameraController;
-              if (widget.onImage != null) {
-                controller!.startImageStream(_processCameraImage);
-              }
-              if (widget.onCameraLensDirectionChanged != null) {
-                widget.onCameraLensDirectionChanged!(
-                  cameraDescription.lensDirection,
-                );
-              }
-              _isCameraInitialized = controller!.value.isInitialized;
-            });
+    cameraController.initialize().then((value) {
+      if (mounted) {
+        setState(() {
+          controller = cameraController;
+          if (widget.onImage != null) {
+            controller!.startImageStream(_processCameraImage);
           }
-        })
-        .catchError((e) {
-          print('Error initializing camera: $e');
+          if (widget.onCameraLensDirectionChanged != null) {
+            widget.onCameraLensDirectionChanged!(
+              cameraDescription.lensDirection,
+            );
+          }
+          _isCameraInitialized = controller!.value.isInitialized;
         });
+      }
+    }).catchError((e) {
+      print('Error initializing camera: $e');
+    });
   }
 
   void initCamera() async {

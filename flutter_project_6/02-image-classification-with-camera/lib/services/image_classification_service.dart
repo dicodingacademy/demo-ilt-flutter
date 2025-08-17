@@ -19,10 +19,9 @@ class ImageClassificationService {
   late final IsolateInference isolateInference;
 
   Future<void> _loadModel() async {
-    final options =
-        InterpreterOptions()
-          ..useNnApiForAndroid = true
-          ..useMetalDelegateForIOS = true;
+    final options = InterpreterOptions()
+      ..useNnApiForAndroid = true
+      ..useMetalDelegateForIOS = true;
 
     // Load model from assets
     interpreter = await Interpreter.fromAsset(modelPath, options: options);

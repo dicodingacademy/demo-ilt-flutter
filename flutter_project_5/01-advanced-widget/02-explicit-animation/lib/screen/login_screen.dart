@@ -136,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen>
                     : AlignTransition(
                       alignment: animation,
                       child: ElevatedButton(
-                        // when the user not fill the form and pointing the cursor 
+                        // when the user not fill the form and pointing the cursor
                         // to the button, the animation will start
                         // and the button will move away from the cursor.
                         onHover: (value) {

@@ -8,8 +8,9 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('end-to-end test', () {
-    testWidgets('verify loading screen and user list',
-        (WidgetTester tester) async {
+    testWidgets('verify loading screen and user list', (
+      WidgetTester tester,
+    ) async {
       app.main();
       await tester.pumpAndSettle();
 
@@ -24,7 +25,7 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       await tester.pumpAndSettle();
 
-      // Verify that the UserList is displayed after loading. 
+      // Verify that the UserList is displayed after loading.
       expect(find.byType(ListView), findsOneWidget);
 
       // Verify that the "Michael Lawson" name is present while ListView is ready
