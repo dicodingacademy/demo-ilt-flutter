@@ -13,7 +13,7 @@ void main() {
 
   late MockClient mockClient;
   late HttpServices service;
-  
+
   setUp(() {
     mockClient = MockClient();
     service = HttpServices(mockClient);
@@ -24,7 +24,10 @@ void main() {
       'returns list of users when the http call completes successfully',
       () async {
         when(
-          () => mockClient.get(Uri.parse("https://reqres.in/api/users?page=2")),
+          () => mockClient.get(
+            Uri.parse("https://reqres.in/api/users?page=2"),
+            headers: {"x-api-key": "reqres-free-v1"},
+          ),
         ).thenAnswer(
           (_) async => http.Response(
             await loadJsonFromAssets("assets/json/users.json"),

@@ -10,7 +10,10 @@ class HttpServices {
         "page": "1",
         "per_page": "2",
       });
-      final response = await http.get(uri);
+      final response = await http.get(
+        uri,
+        headers: {"x-api-key": "reqres-free-v1"},
+      );
 
       if (response.statusCode == 200) {
         final usersResponse = UsersResponse.fromJson(response.body);

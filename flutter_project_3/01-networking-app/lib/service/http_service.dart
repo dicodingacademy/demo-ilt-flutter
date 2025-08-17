@@ -10,7 +10,10 @@ class HttpServices {
   Future<List<User>?> getUsers() async {
     try {
       final uri = Uri.https(_baseUrl, "api/users", {"page": "2"});
-      final response = await _client.get(uri);
+      final response = await _client.get(
+        uri,
+        headers: {"x-api-key": "reqres-free-v1"},
+      );
 
       if (response.statusCode == 200) {
         final usersResponse = UsersResponse.fromJson(response.body);
