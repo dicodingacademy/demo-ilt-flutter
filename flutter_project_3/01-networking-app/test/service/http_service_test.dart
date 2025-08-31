@@ -47,7 +47,10 @@ void main() {
       'throws an exception if the http call completes with an error',
       () async {
         when(
-          () => mockClient.get(Uri.parse("https://reqres.in/api/users?page=2")),
+          () => mockClient.get(
+            Uri.parse("https://reqres.in/api/users?page=2"),
+            headers: {"x-api-key": "reqres-free-v1"},
+          ),
         ).thenAnswer((_) async => http.Response("Error", 404));
 
         expect(() => service.getUsers(), throwsA(isA<Exception>()));
@@ -56,7 +59,10 @@ void main() {
 
     test('throws an exception if json is malformed', () async {
       when(
-        () => mockClient.get(Uri.parse("https://reqres.in/api/users?page=2")),
+        () => mockClient.get(
+          Uri.parse("https://reqres.in/api/users?page=2"),
+          headers: {"x-api-key": "reqres-free-v1"},
+        ),
       ).thenAnswer((_) async => http.Response('Malformed JSON', 200));
 
       expect(() => service.getUsers(), throwsA(isA<Exception>()));
